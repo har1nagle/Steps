@@ -8,16 +8,7 @@ const messages = [
   "Invest your new income 🤑",
 ];
 
-export default function App() {
-  return (
-    <div>
-      <Steps />
-      <Steps />
-    </div>
-  );
-}
-
-function Steps() {
+function App() {
 
   const [step, stepStep] = useState(1);
   const [isOpen, setIsOpen] = useState(true);
@@ -25,23 +16,17 @@ function Steps() {
   // const [test, setTest] = useState({ name: "Jonas" });
   
   function handlePrevious() {
-    if(step > 1) stepStep((s)=> s -1);
+    if(step > 1) stepStep(step - 1);
   }
 
-  function handleNext() {
-    if (step < 4) {
-      stepStep((s)=>s+1);
-      // stepStep((s)=>s+1);       
-    } 
+   function handleNext() {
+     if (step < 4) stepStep(step + 1);
     //  setTest({name: "Hari"})
-  }
+   }
 
   return (
     <div>
-      <button className="close" onClick={() => setIsOpen((is) => !is)}>
-        &times;
-      </button>
-
+      <button className="close" onClick={()=>setIsOpen(!isOpen)}>&times;</button>
       {isOpen && (
         <div className="steps">
           <div className="numbers">
@@ -77,4 +62,4 @@ function Steps() {
   );
 }
 
-
+export default App;
